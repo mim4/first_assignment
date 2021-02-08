@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8"/>
+  <title>Calculator</title>
+  <style>
+      body {background-color: white;}
+    .special {color: rgb(29, 106, 206); font-weight: bold; text-align: center;
+    text-decoration-line: underline; font-size: 21pt;}
+    .title {color:rgb(0, 0, 0); text-align: center; font-size: 18pt;}
+    .text{color: black; text-align:justify ; font-size: 16pt; margin-left: 32pt;}
+    .operator {font-weight: bold;}
+    .email {color:rgb(39, 37, 37); font-size: 14pt; text-align: center;}
+    .select {font-size: 12pt; margin-left: 32pt;}
+    .equal {color:rgb(29, 106, 206); font-weight: bolder; margin-left: 32pt;}
+    #result {border: solid 1pt; font-size: 12pt;border-color: gray; margin-left: 32pt;}
+  </style>
+  <script src="https://d3js.org/d3.v5.min.js"></script>
+  <script>
+    var selectValue;
+    function op() {
+      const x = document.getElementById('first').value;
+      const y = document.getElementById('second').value;
+      var result;
+      if(selectValue == "sum") {
+        result = parseInt(x) + parseInt(y);
+        } else if(selectValue == "minus") {
+          result = parseInt(x) - parseInt(y);
+        } else if(selectValue == "prod") {
+          result = parseInt(x) * parseInt(y);
+        } else if(selectValue == "div"){
+        result = parseInt(x) / parseInt(y);
+        }
+      var output=document.getElementById("result");
+      output.value=result;
+    }
+    function setValue() {
+      selectValue=document.getElementById("selectBox").value;
+    }
+    function init() {
+      var button=document.getElementById("button");
+      button.onclick=op;
+    }
+    window.onload = init;
+  </script>
+</head>
+
+<body>
+  <br>
+  <div class="special">FIRST ASSIGNMENT: CALCULATOR</div>
+  <br>
+  <div class="title">MARTA ILUNDAIN MARTÍNEZ</div>
+  <br>
+  <div class="email">100439245@alumnos.uc3m.es</div>
+  <br>
+  <div class="text">In this assignment, we have created a calculator where we select a certain operator and then run the operation we want with two certain numbers:</div>
+
+  </div>
+    <br>
+      <input class="select" id="first" placeholder="first number">
+      <br>
+      <br>
+      <select class="select" id="selectBox" onChange="setValue()">
+       <option selected disabled>Select operation</option>
+       <option value="sum">+</option>
+       <option value="minus">-</option>
+       <option value="prod">*</option>
+       <option value="div">/</option>
+      </select>
+      <br>
+      <br>
+      <input class="select" id="second" placeholder="second number">
+      <br>
+      <br>
+      <input class="equal"  type="button" id="button" value="=" onclick="op()">
+      <br>
+      <br>
+      <input type="text" id="result" placeholder="Result" readonly onfocus="this.blur();">
+    </div>
+</body>
